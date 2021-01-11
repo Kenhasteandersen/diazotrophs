@@ -13,9 +13,13 @@ semilogx(z, rPonly, 'g-','linewidth',3)
 hold on
 semilogx(z, r, 'm-','linewidth',2)
 semilogx(z, 0*z,'k:')
+plot([1 1],[-0.1, 0.5],'k:')
+plot(0.2*[1 1],[-0.1, 0.5],'k:')
 hold off
 
 xlabel('Size ratio z')
 ylabel('Growth rate r (day^{-1})')
+ylim([-0.1, 0.5])
+
 
 legend({'Without phosphonate breakdown', 'With phosphonate breakdown'},'box','off')

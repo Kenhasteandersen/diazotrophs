@@ -22,14 +22,14 @@ p.m = rho*d^3;
 % Stoichiometry:
 %
 p.rhoCP = 106*12/31;
-p.rhoCB = 6.624*12/14;
+p.rhoCN = 6.624*12/14;
 p.rhoCFe = 10000*12/26;
 %
 % Affinities
 %
 p.aL = 0.25e-7*400*(d/20/z)^baL;
-p.aP = 1e-4*(d/20/z)^baP;
-p.aFe = p.aP*p.rhoCFe;
+p.aP = 1e-4*(d/20/z)^baP*p.rhoCP/30;
+p.aFe = 1e-4*(d/20/z)^baP*p.rhoCFe/100;
 %
 % Metabolism
 %

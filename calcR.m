@@ -5,14 +5,14 @@ JFe = @(Fe) p.aFe*Fe;
 
 Plimit = JL(L) / (p.aP*(1+p.betaD+p.betaP));
 
-if (P>Plimit)
-    r = JL(L) / (p.m*(1+p.betaD+p.betaP));
-else
+r = length(Plimit);
+ix = (P>Plimit);
+    r(ix) = JL(L(ix)) / (p.m*(1+p.betaD+p.betaP));
     if p.bPhosphonate
-        r = (JL(L)+P*p.aP*(p.betaPh-p.betaP)) / (p.m*(1+p.betaD+p.betaPh));
+        r(~ix) = (JL(L(~ix))+P*p.aP*(p.betaPh-p.betaP)) / (p.m*(1+p.betaD+p.betaPh));
     else
-        r = p.aP*P/p.m;
+        r(~ix) = p.aP*P/p.m;
     end
-end
+
 
 r = min(JFe(Fe/p.m), r);

@@ -1,3 +1,6 @@
+%
+% Find the z (size) with the highest growth rate
+%
 function zOpt = calcZopt(bPhosphonate,L,P,Fe)
 
 function obj = objective(z)
@@ -5,6 +8,6 @@ function obj = objective(z)
     obj = -calcR(p,L,P,Fe);
 end
 
-zOpt = fminbnd(@objective, 0,10);
+zOpt = fminbnd(@objective, 0.01,10);
 
 end
