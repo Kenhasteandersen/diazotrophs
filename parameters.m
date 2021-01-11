@@ -1,0 +1,47 @@
+function p = parameters(z, bPhosphonate)
+if (nargin()==1)
+    bPhosphonate = true;
+end
+p.bPhosphonate = bPhosphonate;
+%
+% Size scaling exponents:
+%
+baL = 2;  % Selfshading (could be volume limite = 3) 
+baP = 1;  % Diffusion (could be surface limted = 2)
+bO2 = 1;
+%
+% Base size:
+%
+d=20;
+%
+% Mass
+%
+rho = 2e-7;
+p.m = rho*d^3;
+%
+% Stoichiometry:
+%
+p.rhoCP = 106*12/31;
+p.rhoCB = 6.624*12/14;
+p.rhoCFe = 10000*12/26;
+%
+% Affinities
+%
+p.aL = 0.25e-7*400*(d/20/z)^baL;
+p.aP = 1e-4*(d/20/z)^baP;
+p.aFe = p.aP*p.rhoCFe;
+%
+% Metabolism
+%
+p.aMax = 1;
+p.JLmax = p.aMax*p.m;
+
+p.aR = 0.05;
+p.JO2 = 0.0002*(d/20/z)^bO2;
+p.JR = p.aR*p.m + p.JO2;
+%
+% Costs
+%
+p.betaD = 0.35;
+p.betaP = 0.0016;
+p.betaPh = 0.005+p.betaP;
