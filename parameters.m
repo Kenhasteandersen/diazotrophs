@@ -45,4 +45,4 @@ p.aR = p.aR0 + p.JO2/m;
 %
 p.betaD = 0.35;
 p.betaP = 0.0016;
-p.betaPh = 0.005+p.betaP;
+p.betaPh = 0.005;

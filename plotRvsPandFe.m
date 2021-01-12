@@ -1,4 +1,4 @@
-function plotRvsPandFe(p, L)
+function r = plotRvsPandFe(p, L)
 n = 10;
 
 P = linspace(0,1,n);

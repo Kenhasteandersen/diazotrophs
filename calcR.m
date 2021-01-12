@@ -7,12 +7,15 @@ Plimit = JL(L) / (p.aP*(1+p.betaD+p.betaP));
 
 r = length(Plimit);
 ix = (P>Plimit);
-    r(ix) = JL(L(ix)) / (1+p.betaD+p.betaP);
-    if p.bPhosphonate
-        r(~ix) = (JL(L(~ix))+P*p.aP*(p.betaPh-p.betaP)) / (1+p.betaD+p.betaPh);
-    else
-        r(~ix) = p.aP*P;
-    end
-
-
+% No needs for phosphonates (plenty of P):
+r(ix) = JL(L(ix)) / (1+p.betaD+p.betaP);
+% P limited:
+if p.bPhosphonate
+    % ...with phosphonate break down
+    r(~ix) = (JL(L(~ix))+p.aP*P*p.betaPh) / (1+p.betaD+p.betaPh+p.betaP);
+else
+    %...without phosphonate break down
+    r(~ix) = min(p.aP*P, JL(L(~ix))-p.aP*P*(p.betaD+p.betaP));
+end
+% Iron limitation:
 r = min(JFe(Fe), r);
