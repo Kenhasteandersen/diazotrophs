@@ -1,8 +1,10 @@
 function rDiff = plotDominatType(pTri, pUCYN, L)
 n = 30;
+Pmax = 0.1;
+Femax = 0.01;
 
-P = linspace(0,1,n);
-Fe = linspace(0,0.1,n);
+P = linspace(0,Pmax,n);
+Fe = linspace(0,Femax,n);
 
 rTri = zeros(n,n);
 rUCYN = zeros(n,n);
@@ -27,5 +29,8 @@ contour(Fe,P,rDiff, [0 0],'k-','linewidth',3)
 
 shading interp
 colorbar
+
+xlabel('Fe')
+ylabel('P')
 
 

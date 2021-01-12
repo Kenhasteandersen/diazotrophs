@@ -1,8 +1,12 @@
-function plotRvsZ(L,P,Fe)
+function plotRvsZ(L,P,Fe, funcParam)
+if nargin==3
+    funcParam = @parameters;
+end
+    
 
 z = logspace(-1,1,50);
 for i = 1:length(z)
-    p = parameters(z(i), true);
+    p = funcParam(z(i), true);
     r(i) = calcR(p,L,P,Fe);
     p.bPhosphonate = false;
     rPonly(i) = calcR(p,L,P,Fe);

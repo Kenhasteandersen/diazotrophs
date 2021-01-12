@@ -17,7 +17,7 @@ d=20;
 % Mass
 %
 rho = 2e-7;
-p.m = rho*d^3;
+m = rho*d^3;
 %
 % Stoichiometry:
 %
@@ -25,20 +25,21 @@ p.rhoCP = 106*12/31;
 p.rhoCN = 6.624*12/14;
 p.rhoCFe = 10000*12/26;
 %
-% Affinities
+% Affinities (specific, gC/gC/day)
 %
-p.aL = 0.25e-7*400*(d/20/z)^baL;
-p.aP = 1e-4*(d/20/z)^baP*p.rhoCP/30;
-p.aFe = 1e-4*(d/20/z)^baP*p.rhoCFe/100;
+p.aL = 0.25e-7*400*(d/20/z)^baL / m;
+p.aP = 1e-4*(d/20/z)^baP*p.rhoCP/30 / m;
+p.aFe = 1e-4*(d/20/z)^baP*p.rhoCFe/100 / m;
 %
 % Metabolism
 %
 p.aMax = 1;
-p.JLmax = p.aMax*p.m;
+%p.JLmax = p.aMax*p.m;
 
-p.aR = 0.05;
+p.aR0 = 0.05;
 p.JO2 = 0.0002*(d/20/z)^bO2;
-p.JR = p.aR*p.m + p.JO2;
+p.aR = p.aR0 + p.JO2/m;
+%p.JR = p.aR*p.m + p.JO2;
 %
 % Costs
 %
