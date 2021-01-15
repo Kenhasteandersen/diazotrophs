@@ -21,7 +21,7 @@ else
 end
 % Burn the remaining O2 and reduce growth accordingly:
 jRtot = p.aR0 + p.betaD*r + p.betaP*p.aP*P + (p.betaPh+p.betaP)*jPh;
-r = r - min(0, p.aO2 - jRtot);
+r = r - max(0, p.aO2 - jRtot);
 
 % Iron limitation:
 r = min(JFe(Fe), r);
