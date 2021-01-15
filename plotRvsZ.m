@@ -23,7 +23,7 @@ hold off
 
 xlabel('Size ratio z')
 ylabel('Growth rate r (day^{-1})')
-ylim([-0.1, 0.5])
+ylim([-0.1, 1])
 
 
 legend({'Without phosphonate breakdown', 'With phosphonate breakdown'},'box','off')

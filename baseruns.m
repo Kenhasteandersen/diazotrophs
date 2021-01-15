@@ -1,3 +1,7 @@
+function baseruns(funcParam)
+if nargin==0
+    funcParam = @parametersDutkiewicz;
+end
 
 % My guessstimate parameters:
 P = 0.3;
@@ -11,7 +15,7 @@ L = 100;
 P = 0.03;
 Fe = 0.005;
 L = 100;
-funcParam = @parametersDutkiewicz;
+
 pTri = funcParam(1,true);
 pUCYN = funcParam(0.4, false); 
 paramTriBad = pTri;
@@ -20,8 +24,8 @@ paramTriBad.bPhosphonate = false;
 figure(1)
 clf
 subplot(1,2,1)
-plotRvsL(pTri, pUCYN, P, 1)
-title(sprintf('P = %1.2f, Fe = %1.3f',[P,1]))
+plotRvsL(pTri, pUCYN, P, .02)
+title(sprintf('P = %1.2f, Fe = %1.3f',[P,0.02]))
 %defaultAxes(8);
 subplot(1,2,2)
 plotRvsL(pTri, pUCYN, P, Fe)
@@ -59,7 +63,7 @@ colorbar
 figure(3)
 clf
 subplot(1,2,1)
-plotRvsZ(L, P, 1, funcParam)
+plotRvsZ(L, P, .02, funcParam)
 subplot(1,2,2)
 plotRvsZ(L, P, Fe, funcParam)
 defaultAxes(16);
