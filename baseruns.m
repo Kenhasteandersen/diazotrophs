@@ -67,3 +67,7 @@ plotRvsZ(L, P, .02, funcParam)
 subplot(1,2,2)
 plotRvsZ(L, P, Fe, funcParam)
 defaultAxes(16);
+
+
+figure(4)
+plotSizeRates
