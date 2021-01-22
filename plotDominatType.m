@@ -1,7 +1,7 @@
 function [r1,r2] = plotDominatType(p1, p2, L)
 n = 300;
-Pmax = 0.1;
-Femax = 0.01;
+Pmax = 1;
+Femax = 0.02;
 
 convFe = 1/55*1000;
 convP = 1/31*1000;
@@ -41,6 +41,5 @@ hold on
 contour(Fe, P, r2-r1, [0 0], 'k','linewidth',3)
 %contour(Fe, P, (r2<0 & r1<0)-0.5, [0 0], 'w','linewidth',3)
 
-
-xlabel('Fe (nM)')
-ylabel('P (nM)')
+xlabel('Iron (nM)')
+ylabel('Phosphate (nM)')

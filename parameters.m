@@ -21,20 +21,20 @@ m = rho*d^3;
 %
 % Stoichiometry:
 %
-p.rhoCP = 106*12/31;
-p.rhoCN = 6.624*12/14;
-p.rhoCFe = 3000*12/55;
+%p.rhoCP = 106*12/31;
+%p.rhoCN = 6.624*12/14;
+%p.rhoCFe = 3000*12/55;
 %
 % Affinities (specific, gC/gC/day)
 %
 p.aL = 0.005* z^baL; % Subhendu. Alternatively from Dutkiewicz:  0.75*1.25*0.012 * z^baL;  % Dutkiewicz 2009. mumax*Kpar (note: Kpar is actually the affinity). 
                                   %The factor 0.75 downregulates mumax due to inhibition
-p.aP = 1.25/0.035 / 30 * z^baP;  % mumax/(K*molar mass)
+p.aP = 0.1 * z^baP;  % mumax/(K*molar mass)
 p.aFe = 1.25/0.0011 / 55.83 * z^baP; % As above
 %
 % Metabolism
 %
-p.aMax = 1.25;
+p.aMax = 1;
 %p.JLmax = p.aMax*p.m;
 
 p.aR0 = 0.05;
@@ -48,4 +48,4 @@ p.betaD = 0.35;
 p.betaP = 0.0016;
 p.betaPh = 0.005;
 
-p.mort = 0.05;
+p.mort = 0.15;

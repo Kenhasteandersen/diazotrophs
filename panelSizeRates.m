@@ -7,7 +7,10 @@ end
 z = logspace(-1,1,50);
 for i = 1:length(z)
     p = funcParam(z(i), true);
-    r(i) = calcR(p,L,P,Fe);
+    r(i) = calcR(p,L,P,Fe) + p.mort; % Get rid of the mortality
+
+    pNoPh = funcParam(z(i), false);
+    rNoPh(i) = calcR(pNoPh,L,P,Fe) + p.mort;
     
     jL(i) = p.aMax*(1-exp(-p.aL*L/(p.aMax)))-p.aR0;
     jFe(i) = p.aFe*Fe;
@@ -36,8 +39,10 @@ semilogx(z, r, 'k-','linewidth',5)
 semilogx(z, jL, 'g-','linewidth',3)
 semilogx(z, jFe, 'm-','linewidth',2)
 
+semilogx(z, rNoPh, 'y:','linewidth',3)
+
 plot([1 1],[-0.1, 1],'k--')
-plot(0.2*[1 1],[-0.1, 1],'k--')
+plot(0.4*[1 1],[-0.1, 1],'k--')
 hold off
 
 xlabel('Size ratio z')

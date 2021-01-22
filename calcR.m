@@ -22,7 +22,8 @@ else
 end
 % Burn the remaining O2 and reduce growth accordingly:
 jRtot = p.aR0 + p.betaD*r + p.betaP*p.aP*P + (p.betaPh+p.betaP)*jPh;
-r = r - max(0, p.aO2 - jRtot);
+jC = JL(L)+p.aR0-jRtot-max(0, p.aO2-jRtot); % Carbon available for growth
+r = min(r, jC);
 
 % Iron limitation:
 r = min(JFe(Fe), r);

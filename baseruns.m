@@ -81,3 +81,11 @@ defaultAxes(16);
 
 figure(4)
 plotSizeRates
+%%
+figure(5)
+plotZoptVsL(false,0.03,0.02)
+hold on
+plotZoptVsL(false,0.066,0.02)
+hold on
+plotZoptVsL(false,0.08,0.02)
+
