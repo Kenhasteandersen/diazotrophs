@@ -27,7 +27,7 @@ p.rhoCFe = 3000*12/26;
 %
 % Affinities (specific, gC/gC/day)
 %
-p.aL = 0.005* z^baL; % Subhendu. Alternatively from Dutkiewicz:  0.75*1.25*0.012 * z^baL;  % Dutkiewicz 2009. mumax*Kpar (note: Kpar is actually the affinity). 
+p.aL = 0.75*1.25*0.012 * z^baL;  % Dutkiewicz 2009. mumax*Kpar (note: Kpar is actually the affinity). 
                                   %The factor 0.75 downregulates mumax due to inhibition
 p.aP = 1.25/0.035 / 30 * z^baP;  % mumax/(K*molar mass)
 p.aFe = 1.25/0.0011 / 55.83 * z^baP; % As above
@@ -47,3 +47,5 @@ p.aR = p.aR0 + p.aO2;
 p.betaD = 0.35;
 p.betaP = 0.0016;
 p.betaPh = 0.005;
+
+p.mort = 0.05;

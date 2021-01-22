@@ -26,3 +26,6 @@ r = r - max(0, p.aO2 - jRtot);
 
 % Iron limitation:
 r = min(JFe(Fe), r);
+
+% Mortality:
+r = r - p.mort;

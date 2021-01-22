@@ -1,6 +1,6 @@
 function baseruns(funcParam)
 if nargin==0
-    funcParam = @parametersDutkiewicz;
+    funcParam = @parameters;
 end
 
 % My guessstimate parameters:
@@ -35,29 +35,39 @@ defaultAxes(16);
 
 figure(2)
 clf
-subplot(1,4,1)
-plotDominatType(pTri, pUCYN, 20);
-title('L = 20')
+%subplot(1,3,1)
+%plotDominatType(pTri, pUCYN, 20);
+%title('L = 20')
 
-subplot(1,4,2)
-plotDominatType(pTri, pUCYN, 50);
-title('L = 50')
-ylabel('')
-set(gca,'yticklabel','')
+subplot(1,3,1)
+plotDominatType(pTri, pUCYN, 35);
+title('L = 35')
+plotlabel(' a', false)
+defaultAxes()
+%ylabel('')
+%set(gca,'yticklabel','')
 
-subplot(1,4,3)
+subplot(1,3,2)
 plotDominatType(pTri, pUCYN, 100);
 title('L = 100')
 ylabel('')
 set(gca,'yticklabel','')
+text(0.1, 2, 'UCYN-A')
+text(0.075, 0.5, 'Trichodesmium')
+plotlabel('b', false)
+defaultAxes()
 
-subplot(1,4,4)
+subplot(1,3,3)
 plotDominatType(paramTriBad, pUCYN, 100);
 title('L = 100; no phosphonate')
 ylabel('')
 set(gca,'yticklabel','')
+plotlabel('c', false)
+defaultAxes()
 
-colorbar
+defaultAxesHorizontal(16)
+
+%colorbar
 
 
 figure(3)
