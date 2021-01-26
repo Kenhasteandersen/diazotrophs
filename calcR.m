@@ -21,7 +21,7 @@ else
     jPh(~ix) = 0;
 end
 % Burn the remaining O2 and reduce growth accordingly:
-jRtot = p.aR0 + p.betaD*r + p.betaP*p.aP*P + (p.betaPh+p.betaP)*jPh;
+jRtot = p.aR0 + p.betaD*r + p.betaP*p.aP*P + (p.betaPh)*jPh;
 jC = JL(L)+p.aR0-jRtot-max(0, p.aO2-jRtot); % Carbon available for growth
 r = min(r, jC);
 
