@@ -7,7 +7,7 @@ end
 P = 0.3;
 Fe = 0.05;
 L = 100;
-%funcParam = @parameters;
+funcParam = @parameters;
 %pTri = funcParam(1,true);
 %pUCYN = funcParam(0.2, false); 
 

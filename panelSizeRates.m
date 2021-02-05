@@ -23,20 +23,31 @@ for i = 1:length(z)
 end
 
 hold off
+
+ixx = jP<=r;
+plot(z, r, 'k-','linewidth',3)
+hold on
+plot(z(ixx), jP(ixx), 'k:','linewidth',3)
+plot(z, jL+p.aR0, 'color',[0.4,0,0],'linewidth',3)
+plot(z, jFe, 'm-','linewidth',2)
+
+
+
 ix = r>0;
+fillbetweenplot(z, jL, 0*z, 0.8*[1 1 1]);
+hold on
 fillbetweenplot(z(ix), 0*jP(ix), min(jP(ix),r(ix)), [0,0,0.5]);
 set(gca,'xscale','log')
-hold on
-fillbetweenplot(z, min(r,jP), min(jP+jPh,r), [0,0,1])
+fillbetweenplot(z, min(r,jP), min(jP+jPh,r), [0,0,1]);
 
 ix = jP<=r;
 semilogy(z(ix), jP(ix), 'k:','linewidth',3)
 
-fillbetweenplot(z, jL, min(jL,jL-jRtot+p.aR0), [0.75,0,0]);
+fillbetweenplot(z, jL+p.aR0, min(jL,jL-jRtot+p.aR0), [0.75,0,0]);
 fillbetweenplot(z, min(jL,jL-jRtot+p.aR0), jL-jRtot+p.aR0-jO2, [1,0,0]);
 
 semilogx(z, r, 'k-','linewidth',5)
-semilogx(z, jL, 'color',[0.4,0,0],'linewidth',3)
+semilogx(z, jL+p.aR0, 'color',[0.4,0,0],'linewidth',3)
 semilogx(z, jFe, 'm-','linewidth',2)
 
 %semilogx(z, rNoPh, 'w:','linewidth',3)
@@ -51,7 +62,7 @@ col = [0.6 0 0.6];
 plot(1, calcR(funcParam(1, true),L,P,Fe)+p.mort, ...
     'o','markeredgecolor','w','markerfacecolor',col,'markersize',10)
 plot(1, calcR(funcParam(1, false),L,P,Fe)+p.mort, ...
-    'o','markeredgecolor','w','markersize',8)
+    'o','markeredgecolor','w','markerfacecolor','k','markersize',8)
 
 col = [0 1 0];
 plot(0.4, calcR(funcParam(0.4, false),L,P,Fe)+p.mort, ...
@@ -59,11 +70,17 @@ plot(0.4, calcR(funcParam(0.4, false),L,P,Fe)+p.mort, ...
 
 
 
-xlabel('Size relative to Trichodesmium')
-ylabel('Division rate{\it r} (day^{-1})')
+xlabel('Size relative to{\it Trichodesmium}')
+ylabel('Division rate{\it \mu} (day^{-1})')
 title(sprintf('P=%1.3f  Fe=%1.3f  L=%3.0f',[P,Fe,L]))
-ylim([0, 1])
+ylim([0, 1.05])
+set(gca,'xticklabel',[0.1, 1, 10]);
 
-legend({'Phosphate', 'Phosphonate',...
-    'W/o phosphonates','Respiration','O2 removal',...
-    'Growth rate','Photoharvesting','Iron uptake'},'box','off')
+%legend({'Surplus carbon', 'Phosphate', 'Phosphonate',...
+    %'W/o phosphonates','Respiration','O_2 removal',...
+    %'Growth rate','Photoharvesting','Iron uptake'},'box','off')
+    
+legend({'{\it \mu} w/phosphonates', ...
+    '{\it \mu} wo/phosphonates', ...
+    'Photoharvesting', ...
+    'Iron uptake'},'box','off')
